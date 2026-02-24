@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quản Lý - GameZone</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .admin-page {
+            padding: 40px 0;
+            min-height: 70vh;
+        }
+        .admin-title {
+            font-size: 1.8rem;
+            color: #1a1a2e;
+            margin-bottom: 30px;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .stat-card {
+            background: #fff;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .stat-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 1.3rem;
+        }
+        .stat-icon.blue { background: #e3f2fd; color: #1976d2; }
+        .stat-icon.green { background: #e8f5e9; color: #388e3c; }
+        .stat-icon.purple { background: #f3e5f5; color: #7b1fa2; }
+        .stat-icon.orange { background: #fff3e0; color: #f57c00; }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1a1a2e;
+        }
+        .stat-label {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        .data-table {
+            width: 100%;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .data-table th,
+        .data-table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .data-table th {
+            background: #1a1a2e;
+            color: #fff;
+        }
+        .data-table tr:hover {
+            background: #f9f9f9;
+        }
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 5px;
+            font-size: 1rem;
+        }
+        .action-btn.edit { color: #1976d2; }
+        .action-btn.delete { color: #d32f2f; }
+        
+        @media (max-width: 768px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <i class="fas fa-gamepad"></i>
+                <span>Game<strong>Zone</strong></span>
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="index.html" class="nav-link">Trang Chủ</a></li>
+                    <li><a href="category.html" class="nav-link">PC Gaming</a></li>
+                    <li><a href="category.html" class="nav-link">Console</a></li>
+                    <li><a href="category.html" class="nav-link">Esports</a></li>
+                    <li><a href="admin.html" class="nav-link active">Quản Lý</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Admin Page -->
+    <main class="admin-page">
+        <div class="container">
+            <h1 class="admin-title"><i class="fas fa-chart-line"></i> Dashboard</h1>
+            
+            <!-- Stats -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon blue"><i class="fas fa-newspaper"></i></div>
+                    <div class="stat-value">6</div>
+                    <div class="stat-label">Bài Viết</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon green"><i class="fas fa-eye"></i></div>
+                    <div class="stat-value">186K</div>
+                    <div class="stat-label">Lượt Xem</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon purple"><i class="fas fa-folder"></i></div>
+                    <div class="stat-value">4</div>
+                    <div class="stat-label">Danh Mục</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon orange"><i class="fas fa-users"></i></div>
+                    <div class="stat-value">1.2K</div>
+                    <div class="stat-label">Người Đọc</div>
+                </div>
+            </div>
+
+            <!-- Articles Table -->
+            <h2 style="margin-bottom: 20px;">Bài Viết Gần Đây</h2>
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tiêu Đề</th>
+                        <th>Danh Mục</th>
+                        <th>Ngày</th>
+                        <th>Lượt Xem</th>
+                        <th>Thao Tác</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>GTA 6 Chính Thức Ra Mắt</td>
+                        <td>PC Gaming</td>
+                        <td>01/02/2026</td>
+                        <td>58,420</td>
+                        <td>
+                            <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>CKTG 2026: T1 Faker Vô Địch</td>
+                        <td>Esports</td>
+                        <td>31/01/2026</td>
+                        <td>45,350</td>
+                        <td>
+                            <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>Elden Ring DLC Review</td>
+                        <td>PC Gaming</td>
+                        <td>30/01/2026</td>
+                        <td>32,870</td>
+                        <td>
+                            <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>PS5 Pro Chính Thức Ra Mắt</td>
+                        <td>Console</td>
+                        <td>29/01/2026</td>
+                        <td>28,540</td>
+                        <td>
+                            <button class="action-btn edit"><i class="fas fa-edit"></i></button>
+                            <button class="action-btn delete"><i class="fas fa-trash"></i></button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-bottom">
+                <p>&copy; 2026 GameZone. Designed by JSB_Hieu</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
